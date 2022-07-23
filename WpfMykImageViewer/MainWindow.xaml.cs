@@ -20,9 +20,9 @@ namespace WpfMykImageViewer {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        public MainWindow() {
-            InitializeComponent();
-        }
+
+        public MainWindow() => InitializeComponent();
+
 
         private void OpenButton(object sender, RoutedEventArgs e) {
             //MessageBox.Show("OpenButton");
@@ -31,5 +31,9 @@ namespace WpfMykImageViewer {
             dialog.Controls.Add(combox);
             dialog.ShowDialog();
         }
+    }
+
+    public class UnitTest { 
+        public int TestXUnit() => 0;
     }
 }
