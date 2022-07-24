@@ -1,0 +1,67 @@
+name: .NET Core Release
+
+on:
+  push:
+    branches: [ "master" ]
+    #tags:
+    #  - "[0-9]+.[0-9]+.[0-9]+"
+  pull_request:
+    branches: [ "master" ]
+    paths:
+    - '**.cs'
+    - '**.csproj'
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        #arch: [x86, x64]
+        configuration: [Release]
+
+    runs-on: windows-latest  # For a list of available runner types, refer to
+                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+
+    env:
+      Solution_Name: WpfMykImageViewer.sln                      # Replace with your solution name, i.e. MyWpfApp.sln.
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    # Restore
+    - name: Restore the application
+      run: msbuild WpfMykImageViewer.sln /t:Restore /p:Configuration=Release
+
+    # Build
+    - name: Build
+      run: msbuild WpfMykImageViewer.sln  /p:Platform="Any CPU" /p:Configuration=Release
+
+    #debug
+    - name: Debug
+      run: | 
+        ls
+        ls WpfMykImageViewer\bin\x64\Release\net6.0-windows
+        
+    # Upload Artifacts
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        #name: artifacts_win-${{matrix.arch}}
+        name: WpfMykImageViewer_win-x64
+        #path: build_win_${{matrix.arch}}/install
+        path: WpfMykImageViewer\bin\x64\Release\net6.0-windows
+
+    
