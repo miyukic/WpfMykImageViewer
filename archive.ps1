@@ -1,2 +1,7 @@
-param($input, $output)
-Compress-Archive -Path $input -DestinationPath $output
+param(
+    [Parameter()]
+    [string]$inputPath,
+    [string]$outputPath
+)
+
+Compress-Archive -Path $inputPath -DestinationPath $outputPath

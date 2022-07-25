@@ -67,9 +67,17 @@ jobs:
         #path: build_win_${{matrix.arch}}/install
         path: WpfMykImageViewer\bin\x64\Release\net6.0-windows
 
-    - name: Release
+    # Create Archive
+    - name: Create Archive
+      run: |
+        mkdir ./artifact
+        .\archive.ps1 ".\WpfMykImageViewer\bin\x64\Release\net6.0-windows\*" ".\artifact\WpfMykImageViewer_win-x64.zip"
+        ls ./artifact
+
+    # Create Release
+    - name: Create Release
       uses: ncipollo/release-action@v1
       with:
         omitBody: true
-        artifacts: 'WpfMykImageViewer\bin\x64\Release\net6.0-windows\*'
+        artifacts: './artifact/*'
         token: ${{ secrets.GITHUB_TOKEN }}
