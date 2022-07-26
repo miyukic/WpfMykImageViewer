@@ -19,7 +19,7 @@ jobs:
   build:
     strategy:
       matrix:
-        arch: [x86, x64, ARM, ARM64, Fw-x86, Fw-x64, Fw-ARM, FW-ARM64, Any CPU]
+        arch: [x86, x64, ARM64, Fw-x86, Fw-x64, Fw-ARM, FW-ARM64, Any CPU]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
@@ -45,7 +45,7 @@ jobs:
 
     # Build
     - name: Build
-      run: dotnet publish -c Release -p:Platform="${{matrix.arch}}" -o output
+      run: dotnet publish .\WpfMykImageViewer\WpfMykImageViewer.csproj -c Release -p:Platform="${{matrix.arch}}" -o output
 
     #debug
     - name: Debug

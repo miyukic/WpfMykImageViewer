@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>True</UseWPF>
-    <Platforms>AnyCPU;x64;ARM32;ARM64</Platforms>
+    <Platforms>AnyCPU;x86;x64;ARM;ARM64;Fw-x86;Fw-x64;Fw-ARM;Fw-ARM64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Platform)' == 'Any CPU'">
