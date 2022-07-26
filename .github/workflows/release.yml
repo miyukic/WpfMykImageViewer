@@ -20,6 +20,7 @@ jobs:
     strategy:
       matrix:
         arch: [x86, x64, ARM64, Fw-x86, Fw-x64, Fw-ARM, FW-ARM64, Any CPU]
+        #arch: [x86]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
@@ -62,17 +63,36 @@ jobs:
         #path: build_win_${{matrix.arch}}/install
         path: ./output
 
+  Release:
+    needs: build #build が成功したら
+    runs-on: windows-latest  # For a list of available runner types, refer to
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check cd & move cd
+        run: |
+          ls
+
+     # Artifactsのダウンロード
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: ./artifact
+
     # Create Archive
-    - name: Create Archive
-      run: |
-        mkdir ./artifact
-        .\archive.ps1 ".\output\*" ".\artifact\WpfMykImageViewer-win-${{matrix.arch}}.zip"
-        ls ./artifact
+      - name: Create Archive
+        run: | 
+          ls .\artifact
+          .\archive.ps1 ".\artifact" ".\artifact"
 
     # Create Release
-    - name: Create Release
-      uses: ncipollo/release-action@v1
-      with:
-        omitBody: true
-        artifacts: './artifact/*'
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          omitBody: true
+          artifacts: './artifact/*'
+          token: ${{ secrets.GITHUB_TOKEN }}
