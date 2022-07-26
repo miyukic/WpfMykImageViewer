@@ -19,8 +19,7 @@ jobs:
   build:
     strategy:
       matrix:
-        #arch: [x86, x64]
-        configuration: [Release]
+        arch: [x86, x64, ARM, ARM64, Fw-x86, Fw-x64, Fw-ARM, FW-ARM64, Any CPU]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
@@ -50,28 +49,28 @@ jobs:
 
     # Build
     - name: Build
-      run: msbuild WpfMykImageViewer.sln  /p:Platform="Any CPU" /p:Configuration=Release
+      run: dotnet publish -c Release -p:Platform="${{matrix.arch}}" -o output
 
     #debug
     - name: Debug
       run: |
         ls
-        ls WpfMykImageViewer\bin\x64\Release\net6.0-windows
+        ls ./output
 
     # Upload Artifacts
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
         #name: artifacts_win-${{matrix.arch}}
-        name: WpfMykImageViewer_win-x64
+        name: WpfMykImageViewer-win-${{matrix.arch}}
         #path: build_win_${{matrix.arch}}/install
-        path: WpfMykImageViewer\bin\x64\Release\net6.0-windows
+        path: ./output
 
     # Create Archive
     - name: Create Archive
       run: |
         mkdir ./artifact
-        .\archive.ps1 ".\WpfMykImageViewer\bin\x64\Release\net6.0-windows\*" ".\artifact\WpfMykImageViewer_win-x64.zip"
+        .\archive.ps1 ".\output\*" ".\artifact\WpfMykImageViewer-win-${{matrix.arch}}.zip"
         ls ./artifact
 
     # Create Release
