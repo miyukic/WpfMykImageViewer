@@ -43,10 +43,6 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
 
-    # Restore
-    - name: Restore the application
-      run: msbuild WpfMykImageViewer.sln /t:Restore /p:Configuration=Release
-
     # Build
     - name: Build
       run: dotnet publish -c Release -p:Platform="${{matrix.arch}}" -o output
