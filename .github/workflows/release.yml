@@ -19,7 +19,7 @@ jobs:
   build:
     strategy:
       matrix:
-        arch: [x86, x64, ARM64, Fw-x86, Fw-x64, Fw-ARM, FW-ARM64, Any CPU]
+        arch: [x86, x64, ARM64, Fw-x86, Fw-x64, Fw-ARM, Fw-ARM64, Any CPU]
         #arch: [x86]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
