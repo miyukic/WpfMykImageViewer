@@ -1,70 +1,114 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
     <Nullable>enable</Nullable>
     <UseWPF>True</UseWPF>
     <Platforms>AnyCPU;x86;x64;ARM;ARM64;Fw-x86;Fw-x64;Fw-ARM;Fw-ARM64</Platforms>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Platform)' == 'Any CPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Platform)' == 'Fw-x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Fw-x64'">
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	<SelfContained>false</SelfContained>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Platform)' == 'Fw-x86'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Fw-x86'">
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
 	<SelfContained>false</SelfContained>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Platform)' == 'Fw-ARM'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Fw-ARM'">
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-arm</RuntimeIdentifier>
 	<SelfContained>false</SelfContained>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Platform)' == 'Fw-ARM64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Fw-ARM64'">
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-arm64</RuntimeIdentifier>
 	<SelfContained>false</SelfContained>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Platform)' == 'x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	<PublishReadyToRun>true</PublishReadyToRun>
 	<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Platform)' == 'x86'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
 	<PublishReadyToRun>true</PublishReadyToRun>
 	<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Platform)' == 'ARM64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-arm64</RuntimeIdentifier>
 	<PublishReadyToRun>true</PublishReadyToRun>
 	<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Platform)' == 'ARM'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-arm</RuntimeIdentifier>
 	<PublishReadyToRun>true</PublishReadyToRun>
 	<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <OutputType>Exe</OutputType>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Fw-x86'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Fw-x64'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Fw-ARM'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Fw-ARM64'">
+    <Optimize>False</Optimize>
   </PropertyGroup>
 
 
   <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
     <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
   </ItemGroup>
 
