@@ -28,6 +28,6 @@
         <Canvas/>
       </Menu>
     </DockPanel>
-    <Image Name="image" AllowDrop="True" Drop="image_Drop" />
+    <Image Name="image" AllowDrop="True" Drop="image_Drop" VerticalAlignment="Bottom" Margin="0,20,0,0" HorizontalAlignment="Stretch" StretchDirection="Both" />
   </Grid>
 </Window>

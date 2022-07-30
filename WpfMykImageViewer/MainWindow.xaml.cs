@@ -36,7 +36,7 @@ namespace WpfMykImageViewer {
             //dialog.fi = "Image File(*.bmp,*.jpg,*.png,*.tif)|*.bmp;*.jpg;*.png;*.tif|Bitmap(*.bmp)|*.bmp|Jpeg(*.jpg)|*.jpg|PNG(*.png)|*.png";
             CommonFileDialogResult result = dialog.ShowDialog();
             imageFilePath = dialog.FileName;
-            Console.WriteLine(imageFilePath);
+            Console.WriteLine("imageFilePath = " + imageFilePath);
             try {
                 using (var fs = new FileStream(imageFilePath, FileMode.Open)) {
                     bitmapImage.BeginInit();
@@ -50,9 +50,8 @@ namespace WpfMykImageViewer {
                 }
             } catch(Exception ex) {
                 System.Console.Error.WriteLine(ex.StackTrace);
-                MessageBox.Show("画像ファイルを選んでください");
+                MessageBox.Show("画像ファイルを選んでください", "開けません。",MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-
 
             image.Source = bitmapImage;
         }
