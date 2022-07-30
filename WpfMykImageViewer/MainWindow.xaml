@@ -6,27 +6,28 @@
         xmlns:local="clr-namespace:WpfMykImageViewer"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="ファイル(_F)">
-                    <MenuItem Header="開く(_O)" InputGestureText="Ctrl+O" Click="OpenButton"/>
-                    <MenuItem Header="メニュー 1-2"/>
-                    <MenuItem Header="メニュー 1-3">
-                        <MenuItem Header="メニュー 1-3-1"/>
-                        <MenuItem Header="メニュー 1-3-2"/>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="表示">
-                    <MenuItem Header="メニュー 1-1"/>
-                    <MenuItem Header="メニュー 1-2"/>
-                    <MenuItem Header="メニュー 1-3">
-                        <MenuItem Header="メニュー 1-3-1"/>
-                        <MenuItem Header="メニュー 1-3-2"/>
-                    </MenuItem>
-                </MenuItem>
-                <Canvas/>
-            </Menu>
-        </DockPanel>
-    </Grid>
+  <Grid>
+    <DockPanel Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+      <Menu DockPanel.Dock="Top">
+        <MenuItem Header="ファイル(_F)">
+          <MenuItem Header="開く(_O)" InputGestureText="Ctrl+O" Click="OpenButton"/>
+          <MenuItem Header="メニュー 1-2"/>
+          <MenuItem Header="メニュー 1-3">
+            <MenuItem Header="メニュー 1-3-1"/>
+            <MenuItem Header="メニュー 1-3-2"/>
+          </MenuItem>
+        </MenuItem>
+        <MenuItem Header="表示">
+          <MenuItem Header="メニュー 1-1"/>
+          <MenuItem Header="メニュー 1-2"/>
+          <MenuItem Header="メニュー 1-3">
+            <MenuItem Header="メニュー 1-3-1"/>
+            <MenuItem Header="メニュー 1-3-2"/>
+          </MenuItem>
+        </MenuItem>
+        <Canvas/>
+      </Menu>
+    </DockPanel>
+    <Image Name="image" AllowDrop="True" Drop="image_Drop" />
+  </Grid>
 </Window>
