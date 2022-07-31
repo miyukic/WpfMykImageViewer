@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfMykImageViewer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="Black">
   <Grid>
-    <DockPanel Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+    <DockPanel Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="White">
       <Menu DockPanel.Dock="Top">
         <MenuItem Header="ファイル(_F)">
           <MenuItem Header="開く(_O)" InputGestureText="Ctrl+O" Click="OpenButton"/>
@@ -25,7 +25,7 @@
         <Canvas/>
       </Menu>
     </DockPanel>
-    <Image Name="image" AllowDrop="True" Drop="image_Drop" VerticalAlignment="Bottom" Margin="0,20,0,0" HorizontalAlignment="Stretch" StretchDirection="Both" />
+    <Image Name="image" AllowDrop="True" Drop="image_Drop" VerticalAlignment="Center" Margin="0,20,0,0" HorizontalAlignment="Stretch" StretchDirection="Both" />
     <!--<Storyboard x:Key="rectAnimation">
       <DoubleAnimation
         Storyboard.TargetName="rect"

@@ -24,19 +24,11 @@ namespace WpfMykImageViewer {
     public partial class MainWindow : Window {
 
         private string? imageFilePath = null;
-        private System.Windows.Media.Imaging.BitmapImage bitmapImage = new();
 
         public MainWindow() => InitializeComponent();
 
-        private void OpenButton(object sender, RoutedEventArgs e) {
-            //MessageBox.Show("OpenButton");
-            var dialog = new CommonOpenFileDialog();
-            var combox = new CommonFileDialogComboBox();
-            dialog.Controls.Add(combox);
-            //dialog.fi = "Image File(*.bmp,*.jpg,*.png,*.tif)|*.bmp;*.jpg;*.png;*.tif|Bitmap(*.bmp)|*.bmp|Jpeg(*.jpg)|*.jpg|PNG(*.png)|*.png";
-            CommonFileDialogResult result = dialog.ShowDialog();
-            imageFilePath = dialog.FileName;
-            Console.WriteLine("imageFilePath = " + imageFilePath);
+        private void SetImage(string imageFilePath) {
+            System.Windows.Media.Imaging.BitmapImage bitmapImage = new();
             try {
                 using (var fs = new FileStream(imageFilePath, FileMode.Open)) {
                     bitmapImage.BeginInit();
@@ -55,9 +47,22 @@ namespace WpfMykImageViewer {
 
             image.Source = bitmapImage;
         }
+
+        private void OpenButton(object sender, RoutedEventArgs e) {
+            //MessageBox.Show("OpenButton");
+            var dialog = new CommonOpenFileDialog();
+            var combox = new CommonFileDialogComboBox();
+            dialog.Controls.Add(combox);
+            //dialog.fi = "Image File(*.bmp,*.jpg,*.png,*.tif)|*.bmp;*.jpg;*.png;*.tif|Bitmap(*.bmp)|*.bmp|Jpeg(*.jpg)|*.jpg|PNG(*.png)|*.png";
+            CommonFileDialogResult result = dialog.ShowDialog();
+            imageFilePath = dialog.FileName;
+            Console.WriteLine("imageFilePath = " + imageFilePath);
+            SetImage(imageFilePath);
+        }
         private void image_Drop(object sender, DragEventArgs e) {
             var fileName = e.Data.GetData(DataFormats.FileDrop) as string[];
             if (fileName == null) return;
+            SetImage(fileName[0]);
         }
 
         private void NewWindowButton(object sender, RoutedEventArgs e) {
