@@ -5,27 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfMykImageViewer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="Black">
+        Title="WpfMykImageViewer" Height="450" Width="800" Background="Black" Drop="Window_Drop" AllowDrop="True">
   <Grid>
-    <DockPanel Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="White">
+    <DockPanel Name="MenuDock" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="White">
       <Menu DockPanel.Dock="Top">
         <MenuItem Header="ファイル(_F)">
           <MenuItem Header="開く(_O)" InputGestureText="Ctrl+O" Click="OpenButton"/>
           <MenuItem Header="新しいウィンドウ(_N)" InputGestureText="Ctrl+Shift+N" Click="NewWindowButton"/>
           <Separator></Separator>
-          <MenuItem Header="WpfMykImageViewerを終了(_X)"/>
+          <MenuItem Header="WpfMykImageViewerを終了(_X)" Click="MenuItem_Click_Close"/>
         </MenuItem>
         <MenuItem Header="表示(_V)">
-          <MenuItem Header="ズーム(_Z)"/>
-          <MenuItem Header="ステータスバー(_S)">
-            <MenuItem Header="メニュー 1-3-1"/>
-            <MenuItem Header="メニュー 1-3-2"/>
+          <MenuItem Header="ズーム(_Z)">
+            <MenuItem Header="拡大(_l)" InputGestureText="Ctrl++"/>
+            <MenuItem Header="縮小(_O)" InputGestureText="Ctrl+-"/>
+            <MenuItem Header="既定の倍率に戻す(_R)" InputGestureText="Ctrl+0"/>
           </MenuItem>
+          <MenuItem Header="ステータスバー(_S)"/>
         </MenuItem>
         <Canvas/>
       </Menu>
     </DockPanel>
-    <Image Name="image" AllowDrop="True" Drop="image_Drop" VerticalAlignment="Center" Margin="0,20,0,0" HorizontalAlignment="Stretch" StretchDirection="Both" />
+    <Image 
+      Name="image"
+      AllowDrop="True"
+      Drop="image_Drop"
+      VerticalAlignment="Center"
+      Margin="0,20,0,0"
+      StretchDirection="Both" HorizontalAlignment="Center" />
     <!--<Storyboard x:Key="rectAnimation">
       <DoubleAnimation
         Storyboard.TargetName="rect"

@@ -68,6 +68,17 @@ namespace WpfMykImageViewer {
         private void NewWindowButton(object sender, RoutedEventArgs e) {
 
         }
+
+        //終了メニュー
+        private void MenuItem_Click_Close(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+
+        private void Window_Drop(object sender, DragEventArgs e) {
+            var fileName = e.Data.GetData(DataFormats.FileDrop) as string[];
+            if (fileName == null) return;
+            SetImage(fileName[0]);
+        }
     }
 
     public class UnitTest { 
