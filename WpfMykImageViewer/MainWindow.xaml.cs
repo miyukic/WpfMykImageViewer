@@ -60,6 +60,9 @@ namespace WpfMykImageViewer {
             if (fileName == null) return;
         }
 
+        private void NewWindowButton(object sender, RoutedEventArgs e) {
+
+        }
     }
 
     public class UnitTest { 
