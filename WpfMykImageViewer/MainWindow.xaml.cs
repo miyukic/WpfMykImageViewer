@@ -24,6 +24,7 @@ namespace WpfMykImageViewer {
     public partial class MainWindow : Window {
 
         private string? imageFilePath = null;
+        private Window1? versionWindow = null;
 
         public MainWindow() => InitializeComponent();
 
@@ -53,8 +54,9 @@ namespace WpfMykImageViewer {
             var dialog = new CommonOpenFileDialog();
             var combox = new CommonFileDialogComboBox();
             dialog.Controls.Add(combox);
-            //dialog.fi = "Image File(*.bmp,*.jpg,*.png,*.tif)|*.bmp;*.jpg;*.png;*.tif|Bitmap(*.bmp)|*.bmp|Jpeg(*.jpg)|*.jpg|PNG(*.png)|*.png";
+            //dialog. = "Image File(*.bmp,*.jpg,*.png,*.tif)|*.bmp;*.jpg;*.png;*.tif|Bitmap(*.bmp)|*.bmp|Jpeg(*.jpg)|*.jpg|PNG(*.png)|*.png";
             CommonFileDialogResult result = dialog.ShowDialog();
+            if (result != CommonFileDialogResult.Ok) return;
             imageFilePath = dialog.FileName;
             Console.WriteLine("imageFilePath = " + imageFilePath);
             SetImage(imageFilePath);
@@ -82,8 +84,25 @@ namespace WpfMykImageViewer {
 
         //バージョン表示
         private void MenuItem_Click(object sender, RoutedEventArgs e) {
-            var version = new Window1();
-            version.Show();
+            if (versionWindow == null) {
+                versionWindow = new Window1();
+                versionWindow.Owner = this; //子ウィンドウが裏にならないように
+                versionWindow.Show();
+            }
+        }
+
+        private void Window_Activated(object sender, EventArgs e) {
+            Console.WriteLine("MainWindow#Window_Activated");
+            if (versionWindow != null) {
+
+            }
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e) {
+            Console.WriteLine("MainWindow#Window_Deativated");
+            if (versionWindow != null) {
+                Console.WriteLine("versionWindow#Topmost= " + versionWindow.Topmost);
+            }
         }
     }
 

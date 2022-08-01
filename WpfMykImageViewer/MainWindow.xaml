@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfMykImageViewer"
         mc:Ignorable="d"
         Title="WpfMykImageViewer" Height="460" Width="802"
-        Background="Black" Drop="Window_Drop" AllowDrop="True" Icon="/Resources/icon.ico">
+        Background="Black" Drop="Window_Drop" AllowDrop="True" Icon="/Resources/icon.ico" Activated="Window_Activated" Deactivated="Window_Deactivated">
   <Grid>
     <Image 
       Name="image"
@@ -61,7 +61,7 @@
         </MenuItem>
       </Menu>
     </DockPanel>
-    <ComboBox HorizontalAlignment="Left" Margin="0,432,0,0" VerticalAlignment="Top" Width="120"/>
+    <ComboBox HorizontalAlignment="Left" Margin="0,422,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.246,0.935"/>
     <!--<Storyboard x:Key="rectAnimation">
       <DoubleAnimation
         Storyboard.TargetName="rect"
