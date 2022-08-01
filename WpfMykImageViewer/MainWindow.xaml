@@ -7,23 +7,49 @@
         mc:Ignorable="d"
         Title="WpfMykImageViewer" Height="450" Width="800" Background="Black" Drop="Window_Drop" AllowDrop="True">
   <Grid>
-    <DockPanel Name="MenuDock" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="White">
-      <Menu DockPanel.Dock="Top">
+    <StatusBar
+      RenderTransformOrigin="0.5,0.5"
+      Height="24"
+      VerticalAlignment="Bottom">
+    </StatusBar>
+    <DockPanel Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="White">
+      <Menu DockPanel.Dock="Top" Background="White" Height="60">
         <MenuItem Header="ファイル(_F)">
           <MenuItem Header="開く(_O)" InputGestureText="Ctrl+O" Click="OpenButton"/>
           <MenuItem Header="新しいウィンドウ(_N)" InputGestureText="Ctrl+Shift+N" Click="NewWindowButton"/>
           <Separator></Separator>
+          <MenuItem Header="環境設定(_U)" />
+          <MenuItem Header="印刷(_P)" InputGestureText="Ctrl+P" />
+          <Separator></Separator>
           <MenuItem Header="WpfMykImageViewerを終了(_X)" Click="MenuItem_Click_Close"/>
         </MenuItem>
         <MenuItem Header="表示(_V)">
+          <MenuItem Header="常に手前に表示" IsCheckable="True"/>
           <MenuItem Header="ズーム(_Z)">
             <MenuItem Header="拡大(_l)" InputGestureText="Ctrl++"/>
             <MenuItem Header="縮小(_O)" InputGestureText="Ctrl+-"/>
+            <MenuItem Header="倍率指定" >
+              <MenuItem Header="25%" IsCheckable="True"/>
+              <MenuItem Header="50%" IsCheckable="True"/>
+              <MenuItem Header="75%" IsCheckable="True"/>
+              <MenuItem Header="100%" IsCheckable="True"/>
+              <MenuItem Header="125%" IsCheckable="True"/>
+              <MenuItem Header="150%" IsCheckable="True"/>
+              <MenuItem Header="175%" IsCheckable="True"/>
+              <MenuItem Header="200%" IsCheckable="True"/>
+              <MenuItem Header="300%" IsCheckable="True"/>
+              <MenuItem Header="400%" IsCheckable="True"/>
+              <MenuItem Header="Window Size" IsCheckable="True"/>
+            </MenuItem>
             <MenuItem Header="既定の倍率に戻す(_R)" InputGestureText="Ctrl+0"/>
           </MenuItem>
-          <MenuItem Header="ステータスバー(_S)"/>
+          <MenuItem Header="ステータスバー(_S)" IsCheckable="True"/>
         </MenuItem>
-        <Canvas/>
+        <MenuItem Header="ヘルプ(_H)">
+          <MenuItem Header="GitHub" />
+          <MenuItem Header="README(_H)" />
+          <MenuItem Header="バージョン情報(_A)" />
+        </MenuItem>
       </Menu>
     </DockPanel>
     <Image 
