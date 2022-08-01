@@ -79,6 +79,12 @@ namespace WpfMykImageViewer {
             if (fileName == null) return;
             SetImage(fileName[0]);
         }
+
+        //バージョン表示
+        private void MenuItem_Click(object sender, RoutedEventArgs e) {
+            var version = new Window1();
+            version.Show();
+        }
     }
 
     public class UnitTest { 
