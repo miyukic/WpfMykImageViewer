@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfMykImageViewer"
         mc:Ignorable="d"
-        Title="WpfMykImageViewer バージョン情報" Height="500" Width="510" ResizeMode="NoResize" ShowInTaskbar="False" IsEnabled="False" WindowStartupLocation="CenterScreen" Focusable="False" WindowStyle="ToolWindow">
+        Title="WpfMykImageViewer バージョン情報" Height="230" Width="500" ResizeMode="NoResize" ShowInTaskbar="False" IsEnabled="False" WindowStartupLocation="CenterScreen" Focusable="False" WindowStyle="ToolWindow">
   <Window.Background>
     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
   </Window.Background>
-  <Grid/>
+  <Grid>
+    <Label x:Name="softname" Content="WpfImageViewer&#xD;&#xA;&#xA;Author      Miyukiumoo&#xA;バージョン    0.0.1&#xA;Twitter      @Miyukiumoo" HorizontalAlignment="Left" Margin="39,15,0,0" VerticalAlignment="Top" Width="231"/>
+    <Label Content="Copyright (C) 2022 by Miyuki umoo" HorizontalAlignment="Left" Margin="55,130,0,0" VerticalAlignment="Top"/>
+    <Separator HorizontalAlignment="Left" Margin="39,97,0,0" VerticalAlignment="Top" Height="31" Width="277"/>
+    <Button Content="OK" HorizontalAlignment="Left" Margin="372,168,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click_1"/>
+  </Grid>
 </Window>
