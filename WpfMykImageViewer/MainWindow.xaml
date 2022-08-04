@@ -6,28 +6,28 @@
         xmlns:local="clr-namespace:WpfMykImageViewer"
         mc:Ignorable="d"
         Title="WpfMykImageViewer" Height="460" Width="802"
-        Background="Black" Drop="Window_Drop" AllowDrop="True" Icon="/Resources/icon.ico" Activated="Window_Activated" Deactivated="Window_Deactivated">
+        Background="Black" Drop="Window_Drop" AllowDrop="True" Icon="/Resources/icon.ico" Activated="Window_Activated" Deactivated="Window_Deactivated" MouseWheel="Window_MouseWheel">
   <Grid>
     <Image 
       Name="image"
       AllowDrop="True"
       Drop="image_Drop"
-      VerticalAlignment="Center"
-      Margin="0,20,0,0"
-      StretchDirection="Both" HorizontalAlignment="Center"
+      Margin="0,20,0,22"
+      StretchDirection="Both"
       />
     <StatusBar
       RenderTransformOrigin="0.5,0.5"
-      Height="24"
-      VerticalAlignment="Bottom">
+      Height="22"
+      VerticalAlignment="Bottom" IsEnabled="False">
     </StatusBar>
+    <ComboBox RenderTransformOrigin="0.246,0.935" Height="17" Width="60" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,0,0,2"/>
     <DockPanel Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="White">
       <Menu DockPanel.Dock="Top" Background="White" Height="60">
         <MenuItem Header="ファイル(_F)">
           <MenuItem Header="開く(_O)" InputGestureText="Ctrl+O" Click="OpenButton"/>
           <MenuItem Header="新しいウィンドウ(_N)" InputGestureText="Ctrl+Shift+N" Click="NewWindowButton"/>
           <Separator></Separator>
-          <MenuItem Header="環境設定(_U)" />
+          <MenuItem Header="環境設定(_U)" Click="MenuItem_Click_Settings" />
           <MenuItem Header="印刷(_P)" InputGestureText="Ctrl+P" />
           <Separator></Separator>
           <MenuItem Header="WpfMykImageViewerを終了(_X)" Click="MenuItem_Click_Close"/>
@@ -61,7 +61,6 @@
         </MenuItem>
       </Menu>
     </DockPanel>
-    <ComboBox HorizontalAlignment="Left" Margin="0,422,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.246,0.935"/>
     <!--<Storyboard x:Key="rectAnimation">
       <DoubleAnimation
         Storyboard.TargetName="rect"
