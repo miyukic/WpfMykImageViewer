@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfMykImageViewer.Window1"
+﻿<Window x:Class="WpfMykImageViewer.VersionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,6 +13,6 @@
     <Label x:Name="softname" Content="WpfImageViewer&#xD;&#xA;&#xA;Author      Miyukiumoo&#xA;バージョン    0.0.1&#xA;Twitter      @Miyukiumoo" HorizontalAlignment="Left" Margin="39,15,0,0" VerticalAlignment="Top" Width="231"/>
     <Label Content="Copyright (C) 2022 by Miyuki umoo" HorizontalAlignment="Left" Margin="55,130,0,0" VerticalAlignment="Top"/>
     <Separator HorizontalAlignment="Left" Margin="39,97,0,0" VerticalAlignment="Top" Height="31" Width="277"/>
-    <Button Content="OK" HorizontalAlignment="Left" Margin="372,168,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click_1"/>
+    <Button Content="OK" HorizontalAlignment="Left" Margin="352,136,0,0" VerticalAlignment="Center" Width="77" Click="Button_Click_1" Background="White"/>
   </Grid>
 </Window>

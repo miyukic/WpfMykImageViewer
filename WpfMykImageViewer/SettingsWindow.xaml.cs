@@ -12,18 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfMykImageViewer {
+namespace WpfMykImageViewer
+{
     /// <summary>
-    /// Window1.xaml の相互作用ロジック
+    /// SettingsWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class Window1 : Window {
-        public Window1() {
+    public partial class SettingsWindow : Window
+    {
+        public SettingsWindow()
+        {
             InitializeComponent();
-        }
-
-
-        private void Button_Click_1(object sender, RoutedEventArgs e) {
-
         }
     }
 }
