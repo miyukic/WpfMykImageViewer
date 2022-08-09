@@ -116,7 +116,7 @@ namespace WpfMykImageViewer {
             }
         }
 
-        //環境設定メニュークリックイベントハンドラ
+        //オプションメニュークリックイベントハンドラ
         private void MenuItem_Click_Settings(object sender, RoutedEventArgs e) {
             settingsWindow = new();
             settingsWindow.Owner = this;

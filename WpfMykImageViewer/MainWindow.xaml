@@ -8,26 +8,36 @@
         Title="WpfMykImageViewer" Height="460" Width="802"
         Background="Black" Drop="Window_Drop" AllowDrop="True" Icon="/Resources/icon.ico" Activated="Window_Activated" Deactivated="Window_Deactivated" MouseWheel="Window_MouseWheel">
   <Grid>
-    <Image 
+    <Canvas VerticalAlignment="Center" HorizontalAlignment="Center">
+      <Image 
       Name="image"
       AllowDrop="True"
       Drop="image_Drop"
-      Margin="0,20,0,22"
-      StretchDirection="Both"
-      />
+      StretchDirection="Both" VerticalAlignment="Top" HorizontalAlignment="Left" Height="189" Canvas.Left="-98" RenderTransformOrigin="0.5,0.5" Canvas.Top="-52" Width="313"
+      >
+        <Image.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform ScaleX="-1"/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform/>
+          </TransformGroup>
+        </Image.RenderTransform>
+      </Image>
+    </Canvas>
     <StatusBar
       RenderTransformOrigin="0.5,0.5"
       Height="22"
       VerticalAlignment="Bottom" IsEnabled="False">
     </StatusBar>
     <ComboBox RenderTransformOrigin="0.246,0.935" Height="17" Width="60" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,0,0,2"/>
-    <DockPanel Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="White">
-      <Menu DockPanel.Dock="Top" Background="White" Height="60">
+    <DockPanel Height="18" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="White">
+      <Menu DockPanel.Dock="Top" Height="60" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
         <MenuItem Header="ファイル(_F)">
           <MenuItem Header="開く(_O)" InputGestureText="Ctrl+O" Click="OpenButton"/>
           <MenuItem Header="新しいウィンドウ(_N)" InputGestureText="Ctrl+Shift+N" Click="NewWindowButton"/>
           <Separator></Separator>
-          <MenuItem Header="環境設定(_U)" Click="MenuItem_Click_Settings" />
+          <MenuItem Header="オプション(_U)" Click="MenuItem_Click_Settings" />
           <MenuItem Header="印刷(_P)" InputGestureText="Ctrl+P" />
           <Separator></Separator>
           <MenuItem Header="WpfMykImageViewerを終了(_X)" Click="MenuItem_Click_Close"/>
