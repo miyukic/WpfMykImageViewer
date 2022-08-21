@@ -8,12 +8,17 @@
         Title="WpfMykImageViewer" Height="460" Width="802"
         Background="Black" Drop="Window_Drop" AllowDrop="True" Icon="/Resources/icon.ico" Activated="Window_Activated" Deactivated="Window_Deactivated" MouseWheel="Window_MouseWheel">
   <Grid>
-    <Canvas VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" MinHeight="18"/>
+      <RowDefinition/>
+      <RowDefinition Height="Auto" MinHeight="24.04"/>
+    </Grid.RowDefinitions>
+    <Canvas VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Height="Auto" Width="Auto">
       <Image 
       Name="image"
       AllowDrop="True"
       Drop="image_Drop"
-      StretchDirection="Both" VerticalAlignment="Top" HorizontalAlignment="Left" Height="189" Canvas.Left="-98" RenderTransformOrigin="0.5,0.5" Canvas.Top="-52" Width="313"
+      StretchDirection="Both" VerticalAlignment="Top" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Width="Auto" MouseDown="image_MouseDown" MouseMove="image_MouseMove"
       >
         <Image.RenderTransform>
           <TransformGroup>
@@ -26,13 +31,10 @@
       </Image>
     </Canvas>
     <StatusBar
-      RenderTransformOrigin="0.5,0.5"
-      Height="22"
-      VerticalAlignment="Bottom" IsEnabled="False">
-    </StatusBar>
-    <ComboBox RenderTransformOrigin="0.246,0.935" Height="17" Width="60" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,0,0,2"/>
-    <DockPanel Height="18" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="White">
-      <Menu DockPanel.Dock="Top" Height="60" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
+      RenderTransformOrigin="0.5,0.5" IsEnabled="False" Grid.Row="2"/>
+    <ComboBox RenderTransformOrigin="0.246,0.935" Height="17" Width="60" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2,0,0,0" Grid.Row="2"/>
+    <DockPanel Height="Auto" VerticalAlignment="Center" Background="White" Grid.Row="0">
+      <Menu DockPanel.Dock="Top" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
         <MenuItem Header="ファイル(_F)">
           <MenuItem Header="開く(_O)" InputGestureText="Ctrl+O" Click="OpenButton"/>
           <MenuItem Header="新しいウィンドウ(_N)" InputGestureText="Ctrl+Shift+N" Click="NewWindowButton"/>
